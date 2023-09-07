@@ -7,7 +7,7 @@
   ],
   "builds": [
     {
-      "src": "/api/index.js",
+      "src": "index.html",
       "use": "@now/node"
     }
   ]
