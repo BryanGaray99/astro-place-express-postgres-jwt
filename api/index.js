@@ -33,7 +33,7 @@ app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
