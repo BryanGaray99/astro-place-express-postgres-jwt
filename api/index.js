@@ -33,8 +33,8 @@ app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-app.get('/api', (req, res) => {
-  res.send('Welcome to Astro Place');
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.listen(port, () => {
