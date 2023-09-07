@@ -3,7 +3,7 @@ const cors = require('cors');
 const routerApi = require('./routes');
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.middleware');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware para recibir información
 app.use(express.json());
@@ -32,6 +32,10 @@ routerApi(app);
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
+
+app.get('/api', (req, res) => {
+  res.send('Welcome to Astro Place');
+});
 
 app.listen(port, () => {
     console.log(`Astro place backend app listening at http://localhost:${port}`);
