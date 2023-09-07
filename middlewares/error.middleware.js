@@ -7,6 +7,16 @@ function logErrors (err, req, res, next) {
   next(err);
 }
 
+// Boom para manejar errores
+function boomErrorHandler (err, req, res, next) {
+  if (err.isBoom) {
+      const { output } = err;
+      res.status(output.statusCode).json(output.payload);
+  } else {
+    next(err);
+  }
+};
+
 // Middleware para manejar errores
 function errorHandler (err, req, res, next) {
     console.log('errorHandler');
@@ -14,6 +24,6 @@ function errorHandler (err, req, res, next) {
         message: err.message,
         stack: err.stack,
     })
-}
+};
 
-module.exports = { logErrors , errorHandler };
+module.exports = { logErrors , errorHandler, boomErrorHandler };

@@ -38,7 +38,7 @@ productsRouter.post('/', async (req, res) => {
   })
 });
 
-productsRouter.patch('/:id', async (req, res) => {
+productsRouter.patch('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
     const body = req.body;
@@ -49,19 +49,22 @@ productsRouter.patch('/:id', async (req, res) => {
       id
     })
   } catch (error) {
-    res.status(404).json({
-      message: error.message
-    });
+    next(error);
   }
 });
 
-productsRouter.delete('/:id', async (req, res) => {
-  const { id } = req.params;
-  const product = await service.delete(id);
-  res.json({
-    message: 'Se eliminó el producto',
-    id
-  })
+productsRouter.delete('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const product = await service.delete(id);
+    res.json({
+      message: 'Se eliminó el producto',
+      data: product,
+      id
+    })
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = productsRouter;
