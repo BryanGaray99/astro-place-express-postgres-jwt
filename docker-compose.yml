@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=buser99
+      - POSTGRES_PASSWORD=buser99
+      - POSTGRES_DB=astro-place
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data

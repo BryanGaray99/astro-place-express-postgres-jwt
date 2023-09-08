@@ -186,4 +186,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Postgres_data
+postgres_data
+
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,windows
