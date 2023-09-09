@@ -1,10 +1,15 @@
 const {faker} = require('@faker-js/faker');
 const boom = require('@hapi/boom');
+
 class productService {
 
   constructor() {
     this.products = [];
     this.generate();
+    this.pool = pool;
+    this.pool.on ('error', (err) => {
+      console.error(err);
+    })
   };
 
   generate() {
@@ -29,7 +34,9 @@ class productService {
   };
 
   async find() {
-    return this.products;
+    const query = 'SELECT * FROM tasks';
+    const res = await this.pool.query(query);
+    return res.rows;
   };
 
   async findOne(id) {
