@@ -24,7 +24,7 @@ services:
     image: mysql:5.7
     environment:
       - MYSQL_DATABASE=astro-place
-      - MYSQL_USER=buser99
+      - MYSQL_USER=root
       - MYSQL_ROOT_PASSWORD=buser99
       - MYSQL_PORT=3306
     ports:
