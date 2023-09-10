@@ -19,3 +19,23 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=buser99
     ports:
       - 5050:80
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=astro-place
+      - MYSQL_USER=buser99
+      - MYSQL_ROOT_PASSWORD=buser99
+      - MYSQL_PORT=3306
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=mysql
+      - MYSQL_ROOT_PASSWORD=buser99
+    ports:
+      - 8080:80
