@@ -47,13 +47,14 @@ const OrderProductSchema = {
 
 class OrderProduct extends Model{
 	static associate(models) {
+    //
 	}
 
 	static config(sequelize) {
 		return {
 			sequelize,
 			tableName: ORDER_PRODUCT_TABLE,
-			modelName: 'OrderProdcut',
+			modelName: 'OrderProduct',
 			timestamps: false,
 		};
 	}
