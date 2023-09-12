@@ -1,4 +1,5 @@
 const boom = require('@hapi/boom');
+const { Op } = require('sequelize');
 const { models } = require('../libs/sequelize');
 
 class productService {
@@ -11,10 +12,34 @@ class productService {
     return newProduct;
   };
 
-  async find() {
-    const res = await models.Product.findAll({
-      include: ['category']
-    });
+  async find(query) {
+    const options = {
+      include: ['category'],
+      where: {},
+    };
+
+    // Paginación
+    const { limit, offset } = query;
+    if (limit && offset) {
+      options.limit = limit;
+      options.offset = offset;
+    };
+
+    // Filtrado dinámico por precio
+    const { price } = query;
+    if (price) {
+      options.where.price = price;
+    };
+
+    // Filtrado dinámico por rango de precios
+    const { price_min, price_max } = query;
+    if (price_min && price_max) {
+      options.where.price = {
+        [Op.between]: [price_min, price_max]
+      };
+    }
+
+    const res = await models.Product.findAll(options);
     return res;
   };
 
