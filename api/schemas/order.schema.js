@@ -1,17 +1,14 @@
 const Joi = require('joi');
 
 const id = Joi.number().integer();
-const name = Joi.string().min(3).max(15);
-const image = Joi.string().uri();
+const customerId = Joi.number().integer();
 
 const createOrderSchema = Joi.object({
-  name: name.required(),
-  image: image.required()
+  customerId: customerId.required(),
 })
 
 const updateOrderSchema = Joi.object({
-  name: name,
-  image: image
+  customerId
 })
 
 const getOrderSchema = Joi.object({
