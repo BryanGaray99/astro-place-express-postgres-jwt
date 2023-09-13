@@ -10,7 +10,8 @@
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migrations:run": "sequelize-cli db:migrate",
     "migrations:rollback": "sequelize-cli db:migrate:undo",
-    "migrations:delete": "sequelize-cli db:migrate:undo:all"
+    "migrations:delete": "sequelize-cli db:migrate:undo:all",
+    "verce-build": "echo deployed successfully"
   },
   "keywords": [],
   "author": "Bryan Garay <bryangarayacademico@gmail.com>",
@@ -20,8 +21,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "nodemon": "^3.0.1",
-    "prettier": "^3.0.3",
-    "sequelize-cli": "^6.6.1"
+    "prettier": "^3.0.3"
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
@@ -34,6 +34,7 @@
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "save": "^2.9.0",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "sequelize-cli": "^6.6.1"
   }
 }
