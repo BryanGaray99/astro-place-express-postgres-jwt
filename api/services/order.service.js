@@ -38,15 +38,23 @@ class OrderService {
   };
 
   async update(id, changes) {
-    const order = await this.findOne(id);
-    const res = await order.update(changes);
-    return res;
+    const order = await models.Order.findByPk(id);
+    if (!order) {
+      throw boom.notFound('Order not found');
+    } else {
+      const res = await order.update(changes);
+      return res;
+    }
   };
 
   async delete(id) {
-    const order = await this.findOne(id);
-    await order.destroy();
-    return { id };
+    const order = await models.Order.findByPk(id);
+    if (!order) {
+      throw boom.notFound('Order not found');
+    } else {
+      await order.destroy();
+      return { id, message: 'Order deleted' };
+    }
   };
 };
 

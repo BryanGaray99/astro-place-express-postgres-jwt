@@ -72,7 +72,7 @@ router.delete('/:id',
     try {
       const { id } = req.params;
       await service.delete(id);
-      res.status(201).json({
+      res.status(200).json({
         message : 'Se eliminó el usuario',
         id
       });

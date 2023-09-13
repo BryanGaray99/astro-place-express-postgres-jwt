@@ -30,10 +30,10 @@ const CustomerSchema = {
     defaultValue: Sequelize.NOW
   },
   userId: {
-    field: 'user_id',
     allowNull: true,
     type: DataTypes.INTEGER,
     unique: true,
+    field: 'user_id',
     references: {
       model: USER_TABLE,
       key: 'id'
@@ -45,10 +45,15 @@ const CustomerSchema = {
 
 class Customer extends Model {
   static associate(models) {
-    this.belongsTo(models.User, { as: 'user' });
+    this.belongsTo(models.User, {
+      as: 'user',
+      foreignKey: 'userId',
+      onDelete: 'SET NULL'
+    });
     this.hasMany(models.Order, {
       as: 'orders',
-      foreignKey: 'customerId'
+      foreignKey: 'customerId',
+      onDelete: 'SET NULL'
     });
   };
 

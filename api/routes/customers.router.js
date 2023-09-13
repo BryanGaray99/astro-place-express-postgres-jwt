@@ -40,7 +40,7 @@ router.post('/',
     try {
       const body = req.body;
       const newCustomer = await service.create(body);
-      res.status(201).json(newCustomer);
+      res.status(200).json(newCustomer);
     } catch (error) {
       next(error);
     }
@@ -65,20 +65,20 @@ router.patch('/:id',
     }
 });
 
-router.delete('/:id', async (req, res, next) => {
-  validatorHandler(getCustomerSchema, 'params'),
-  async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      await service.delete(id);
-      res.status(201).json({
-        message : 'Se eliminó el Customer',
-        id
-      });
-    } catch (error) {
-      next(error);
-    }
-  };
-});
+// router.delete('/:id', async (req, res, next) => {
+//   validatorHandler(getCustomerSchema, 'params'),
+//   async (req, res, next) => {
+//     try {
+//       const { id } = req.params;
+//       await service.delete(id);
+//       res.status(201).json({
+//         message : 'Se eliminó el Customer',
+//         id
+//       });
+//     } catch (error) {
+//       next(error);
+//     }
+//   };
+// });
 
 module.exports = router;

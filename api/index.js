@@ -36,6 +36,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/web.js', (req, res) => {
+  res.sendFile(__dirname + './web.js');
+});
+
 app.listen(port, () => {
     console.log(`Astro place backend app listening at http://localhost:${port}`);
 });

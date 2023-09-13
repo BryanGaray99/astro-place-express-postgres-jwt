@@ -30,7 +30,8 @@ class Category extends Model {
   static associate(models) {
     this.hasMany(models.Product, {
       as: 'products',
-      foreignKey: 'categoryId'
+      foreignKey: 'categoryId',
+      onDelete: 'SET NULL'
     });
   };
   static config(sequelize) {

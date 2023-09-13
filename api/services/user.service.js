@@ -18,9 +18,7 @@ class UserService {
   };
 
   async findOne(id) {
-    const user = await models.User.findByPk(id, {
-      include: ['customer']
-    });
+    const user = await models.User.findByPk(id);
     if (!user) {
       throw boom.notFound('User not found');
     }
@@ -28,15 +26,23 @@ class UserService {
   };
 
   async update(id, changes) {
-    const user = await this.findOne(id);
-    const res = await user.update(changes);
-    return res;
+    const user = await models.User.findByPk(id);
+    if (!user) {
+      throw boom.notFound('User not found');
+    } else {
+      const res = await user.update(changes);
+      return res;
+    }
   };
 
   async delete(id) {
-    const user = await this.findOne(id);
-    await user.destroy();
-    return { id };
+    const user = await models.User.findByPk(id);
+    if (!user) {
+      throw boom.notFound('User not found');
+    } else {
+      await user.destroy();
+      return { id, message: 'User deleted' };
+    }
   };
 };
 

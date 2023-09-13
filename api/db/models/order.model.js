@@ -12,14 +12,14 @@ const OrderSchema = {
 	},
 	customerId: {
 		field: 'customer_id',
-		allowNull: false,
+		allowNull: true,
 		type: DataTypes.INTEGER,
 		References: {
 			model: CUSTOMER_TABLE,
 			key: 'id',
 		},
 		onUpdate: 'CASCADE',
-		onDelete: 'SETNULL',
+		onDelete: 'SET NULL',
 	},
 	createdAt: {
 		allowNull: false,
@@ -27,29 +27,29 @@ const OrderSchema = {
 		field: 'created_at',
 		defaultValue: Sequelize.NOW,
 	},
-  total: {
-    type: DataTypes.VIRTUAL,
-    get() {
-      if (this.orderProducts.length > 0) {
-        return this.orderProducts.reduce((total, item) => {
-          return total + (item.price * item.OrderProduct.amount);
-        }, 0);
-      }
-      return 0;
-    }
-  }
+  // total: {
+  //   type: DataTypes.VIRTUAL,
+  //   get() {
+  //     if (this.orderProducts.length > 0) {
+  //       return this.orderProducts.reduce((total, item) => {
+  //         return total + (item.price * item.OrderProduct.amount);
+  //       }, 0);
+  //     }
+  //     return 0;
+  //   }
 };
 
 class Order extends Model{
 	static associate(models) {
 		this.belongsTo(models.Customer, {
-			as: 'customer',
+			as: 'customer'
 		});
     this.belongsToMany(models.Product, {
       as: 'orderProducts',
       through: models.OrderProduct,
       foreignKey: 'order_id',
-      otherKey: 'product_id'
+      otherKey: 'product_id',
+      onDelete: 'CASCADE'
     })
 	}
 

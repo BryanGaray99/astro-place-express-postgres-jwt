@@ -44,9 +44,7 @@ class productService {
   };
 
   async findOne(id) {
-    const product = await models.Product.findByPk(id, {
-      include: ['category']
-    });
+    const product = await models.Product.findByPk(id);
     if (!product) {
       throw boom.notFound('Product not found');
     }
@@ -54,15 +52,23 @@ class productService {
   };
 
   async update(id, changes) {
-    const product = await this.findOne(id);
-    const res = await product.update(changes);
-    return res;
+    const product = await models.Product.findByPk(id);
+    if (!product) {
+      throw boom.notFound('Product not found');
+    } else {
+      const res = await product.update(changes);
+      return res;
+    }
   };
 
   async delete(id) {
-    const product = await this.findOne(id);
-    await product.destroy();
-    return { id };
+    const product = await models.Product.findByPk(id);
+    if (!product) {
+      throw boom.notFound('Product not found');
+    } else {
+      await product.destroy();
+      return { id, message: 'Product deleted' };
+    }
   };
 };
 
