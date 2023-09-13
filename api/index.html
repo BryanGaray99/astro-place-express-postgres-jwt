@@ -1,148 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Place</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            overflow: hidden;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        header img {
-            max-width: 200px;
-        }
-
-        main {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             justify-content: center;
-            padding: 20px;
-            gap: 20px;
-            overflow: auto;
-            max-height: 100vh;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            text-align: center;;
+            margin: 100px 0;
+            background-color: rgb(236, 216, 255);
         }
 
-        .entity {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            flex: 1 1 calc(50% - 20px); /* Dos grupos por fila */
-        }
-
-        .entity h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .endpoint {
-            background-color: #f2f2f2;
+        h1 {
             color: #333;
-            padding: 5px;
-            margin-top: 10px;
         }
 
-        .endpoint a {
+        .redirect-button {
+            background-color: #004792;
+            color: #fff;
+            padding: 10px 20px;
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .endpoint a:hover {
-            color: #007bff;
-        }
-
-        .get-button {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .get-button:hover {
-            background-color: #0056b3;
-        }
-
-        .get-one-button {
-            background-color: #9ac7e5;
-            color: white;
-        }
-
-        .get-one-button:hover {
-            background-color: #7aa5c9;
-        }
-
-        .patch-button {
-            background-color: #ffa500;
-            color: white;
-        }
-
-        .patch-button:hover {
-            background-color: #e68a00;
-        }
-
-        .post-button {
-            background-color: #4caf50;
-            color: white;
-        }
-
-        .post-button:hover {
-            background-color: #388e3c;
-        }
-
-        .delete-button {
-            background-color: #ff4444;
-            color: white;
-        }
-
-        .delete-button:hover {
-            background-color: #cc0000;
+            border-radius: 5px;
+            margin-top: 20px;
         }
     </style>
-    <title>Astro Place Backend</title>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Astro Place Logo">
-    </header>
-    <main>
-        <section class="entity">
-            <h2>Users</h2>
-            <div class="endpoint">
-                <a href="/api/v1/users" target="_blank">Get All</a>
-            </div>
-            <button class="get-button">Get All</button>
-            <button class="get-one-button">Get One</button>
-            <button class="patch-button">Update</button>
-            <button class="post-button">Create</button>
-            <button class="delete-button">Delete</button>
-        </section>
-
-        <section class="entity">
-            <h2>Customers</h2>
-            <div class="endpoint">
-                <a href="/api/v1/customers" target="_blank">Get All</a>
-            </div>
-            <button class="get-button">Get All</button>
-            <button class="get-one-button">Get One</button>
-            <button class="patch-button">Update</button>
-            <button class="post-button">Create</button>
-            <button class="delete-button">Delete</button>
-        </section>
-
-        <!-- Agrega más secciones para otras entidades y operaciones CRUD -->
-
-    </main>
+    <h1>Welcome to the Astro Place test server</h1>
+    <a class="redirect-button" href="/api/v1/products">Try viewing the list of products</a>
+    <a class="redirect-button" href="https://github.com/BryanGaray99/astro-place-express-backend">Also, check out the GitHub repository</a>
 </body>
 </html>
