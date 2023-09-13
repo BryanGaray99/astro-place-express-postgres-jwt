@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Backend practice with Node.js and Express.js",
   "main": "index.js",
+  "engines": {
+    "node": ">=14 <15"
+  },
   "scripts": {
+    "start": "node src/index.js",
     "dev": "nodemon api/index.js",
-    "start": "node api/index.js",
     "lint": "eslint",
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migrations:run": "sequelize-cli db:migrate",
