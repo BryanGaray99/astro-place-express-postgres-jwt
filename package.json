@@ -14,7 +14,7 @@
     "migrations:run": "sequelize-cli db:migrate",
     "migrations:rollback": "sequelize-cli db:migrate:undo",
     "migrations:delete": "sequelize-cli db:migrate:undo:all",
-    "verce-build": "echo deployed successfully"
+    "vercel-build": "echo deployed successfully"
   },
   "keywords": [],
   "author": "Bryan Garay <bryangarayacademico@gmail.com>",

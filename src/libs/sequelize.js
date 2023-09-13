@@ -12,6 +12,7 @@ const connectionString = config.pgURL + "?sslmode=require";
 if (config.env === 'production') {
   options.dialectOptions = {
     ssl: {
+      require: true,
       rejectUnauthorized: false
     }
   };
