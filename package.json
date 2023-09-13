@@ -4,7 +4,7 @@
   "description": "Backend practice with Node.js and Express.js",
   "main": "index.js",
   "engines": {
-    "node": ">=14 <15"
+    "node": ">=14 <18"
   },
   "scripts": {
     "start": "node src/index.js",
