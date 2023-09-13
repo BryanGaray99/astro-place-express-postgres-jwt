@@ -4,18 +4,20 @@ const setUpModels = require('../db/models');
 
 const options = {
   dialect: 'postgres',
-  logging: config.isProd ? false : true,
+  logging: config.env === 'production' ? false : true,
 };
 
-if (config.isProd) {
+const connectionString = config.pgURL + "?sslmode=require";
+
+if (config.env === 'production') {
   options.dialectOptions = {
     ssl: {
       rejectUnauthorized: false
     }
-  }
+  };
 };
 
-const sequelize = new Sequelize(config.pgURL, options);
+const sequelize = new Sequelize(connectionString, options);
 
 setUpModels(sequelize);
 

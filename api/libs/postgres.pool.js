@@ -3,13 +3,10 @@ const { config } = require('../config');
 
 const options = {};
 
-if (config.isProd) {
+if (config.env === 'production') {
   options.connectionString = config.pgURL + "?sslmode=require";
 } else {
-    const USER = encodeURIComponent(config.dbUser);
-    const PASSWORD = encodeURIComponent(config.dbPassword);
-    URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
-    options.connectionString = URI;
+  options.connectionString = config.pgURL;
 };
 
 const pool = new Pool(options);
