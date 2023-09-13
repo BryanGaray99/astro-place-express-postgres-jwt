@@ -4,10 +4,7 @@ const { config } = require('../config');
 const options = {};
 
 if (config.isProd) {
-  options.connectionString = config.dbUrl;
-  options.ssl = {
-    rejectUnauthorized: false
-  }
+  options.connectionString = config.pgURL + "?sslmode=require";
 } else {
     const USER = encodeURIComponent(config.dbUser);
     const PASSWORD = encodeURIComponent(config.dbPassword);
@@ -15,6 +12,6 @@ if (config.isProd) {
     options.connectionString = URI;
 };
 
-const pool = new Pool();
+const pool = new Pool(options);
 
 module.exports = pool;

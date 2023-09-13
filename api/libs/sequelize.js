@@ -13,9 +13,15 @@ if (config.isProd) {
       rejectUnauthorized: false
     }
   }
+} else {
+  options.dialectOptions = {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }
 };
 
-const sequelize = new Sequelize(config.dbUrl, options);
+const sequelize = new Sequelize(config.pgURL, options);
 
 setUpModels(sequelize);
 
