@@ -7,7 +7,7 @@ const options = {
   logging: config.env === 'production' ? false : true,
 };
 
-const connectionString = config.pgURL + "?sslmode=require";
+const connectionString = config.pgURL;
 
 if (config.env === 'production') {
   options.dialectOptions = {
