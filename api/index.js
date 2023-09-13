@@ -33,7 +33,7 @@ app.use(boomErrorHandler);
 app.use(errorHandler);
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/web.html');
 });
 
 
