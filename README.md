@@ -2,14 +2,6 @@
 
 Welcome to the Astro Place, an Express Backend with PostgreSQL project! This project serves as a demonstration of various backend development concepts and best practices. It covers a wide range of topics, including Sequelize ORM, creation of models and database management with migrations, Schemas validation with Joi, Error handling Middlewares using Boom, defition of services and routers using Single-Responsability principle, creation of development servers, containers and volumes with Docker, administration of the database with pgAdmin and much more. 
 
-## Project Overview
-
-This project showcases the implementation of a Node.js/Express Backend with a focus on the following key aspects:
-
-- **Schema Validation with Joi**: The project leverages Joi for data validation, ensuring that incoming data meets predefined schemas.
-
-- **Error Handling with Boom**: Middleware functions handle errors gracefully using Boom, providing informative and standardized error responses.
-
 ## Endpoints
 
 The vailable endpoints and the documentation was made with Swagger, you can try out here:
