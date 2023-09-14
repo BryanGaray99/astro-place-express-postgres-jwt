@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const routerApi = require('./routes');
+const { checkApiKey } = require('./middlewares/auth.middleware');
 const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.middleware');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware para manejar archivos estaticos
 app.use(express.static(__dirname + '/public'));
 
 // Middleware para recibir información
@@ -22,8 +24,18 @@ const options = {
     }
   }
 };
-
 app.use(cors(options));
+
+// Endpoints de entrada
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/api.html');
+});
+
+app.get('/test',
+  checkApiKey,
+  (req, res) => {
+    res.send('Autenticado');
+})
 
 // Traemos el router de las rutas
 routerApi(app);
@@ -33,11 +45,6 @@ app.use(logErrors);
 app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/api.html');
-});
-
 
 app.listen(port, () => {
     console.log(`Astro place backend app listening at http://localhost:${port}`);
