@@ -23,7 +23,7 @@ For the project I also prepared some notes in form of step by step tutorials wit
 
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/BryanGaray99/astro-place-express-postgre.git`
+1. Clone the repository: `git clone https://github.com/BryanGaray99/astro-place-express-postgres.git`
 2. Install dependencies: `npm install`
 3. Configure the environment variables following the example file.
 4. Start the server with nodemon with: `npm run dev`
