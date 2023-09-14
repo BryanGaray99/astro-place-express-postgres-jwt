@@ -6,6 +6,8 @@ const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.static(__dirname + '/public'));
+
 // Middleware para recibir información
 app.use(express.json());
 
@@ -33,7 +35,7 @@ app.use(boomErrorHandler);
 app.use(errorHandler);
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/web.html');
+  res.sendFile(__dirname + '/public/api.html');
 });
 
 
