@@ -37,6 +37,9 @@ app.get('/test',
     res.send('Autenticado');
 })
 
+// Passport para autenticacion
+require('./utils/auth');
+
 // Traemos el router de las rutas
 routerApi(app);
 

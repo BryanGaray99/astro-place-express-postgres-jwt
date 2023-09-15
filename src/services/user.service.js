@@ -18,7 +18,18 @@ class UserService {
 
   async find() {
     const res = await models.User.findAll({
-      include: ['customer']
+      include: ['customer'],
+      attributes: {
+        exclude: ['password']
+      }
+    });
+    return res;
+  };
+
+  // Function for login
+  async findByEmail(email) {
+    const res = await models.User.findOne({
+      where: { email },
     });
     return res;
   };
@@ -27,7 +38,8 @@ class UserService {
     const user = await models.User.findByPk(id);
     if (!user) {
       throw boom.notFound('User not found');
-    }
+    };
+    delete user.dataValues.password;
     return user;
   };
 
@@ -37,6 +49,7 @@ class UserService {
       throw boom.notFound('User not found');
     } else {
       const res = await user.update(changes);
+      delete res.dataValues.password;
       return res;
     }
   };
