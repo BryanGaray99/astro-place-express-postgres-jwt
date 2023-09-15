@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 
 const OrderService = require('../services/order.service');
 const validatorHandler = require('../middlewares/validator.middleware');
@@ -7,7 +8,9 @@ const { createOrderSchema, updateOrderSchema, getOrderSchema, addOrderProductsSc
 const router = express.Router();
 const service = new OrderService();
 
-router.get('/', async (req, res, next) => {
+router.get('/',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res, next) => {
   try {
     const orders = await service.find();
     res.json(orders);
@@ -17,6 +20,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/:id',
+  passport.authenticate('jwt', { session: false }),
   validatorHandler(getOrderSchema, 'params'),
   async (req, res, next) => {
   try {
@@ -35,6 +39,7 @@ router.get('/:id',
 });
 
 router.post('/',
+  passport.authenticate('jwt', { session: false }),
   validatorHandler(createOrderSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -48,6 +53,7 @@ router.post('/',
 );
 
 router.post('/add-products',
+  passport.authenticate('jwt', { session: false }),
   validatorHandler(addOrderProductsSchema, 'body'),
   async (req, res, next) => {
     try {
@@ -61,6 +67,7 @@ router.post('/add-products',
 );
 
 router.patch('/:id',
+  passport.authenticate('jwt', { session: false }),
   validatorHandler(getOrderSchema, 'params'),
   validatorHandler(updateOrderSchema, 'body'),
   async (req, res, next) => {
@@ -78,21 +85,5 @@ router.patch('/:id',
     }
   }
 );
-
-// router.delete('/:id', async (req, res, next) => {
-//   validatorHandler(getOrderSchema, 'params'),
-//   async (req, res, next) => {
-//     try {
-//       const { id } = req.params;
-//       await service.delete(id);
-//       res.status(200).json({
-//         message : 'Se eliminó el producto',
-//         id
-//       });
-//     } catch (error) {
-//       next(error);
-//     }
-//   }
-// });
 
 module.exports = router;
