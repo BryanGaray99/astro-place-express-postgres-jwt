@@ -11,4 +11,15 @@ function checkApiKey(req, res, next) {
   next();
 };
 
-module.exports = { checkApiKey }
+function checkRole(...roles) {
+  return (req, res, next) => {
+    const user = req.user;
+    if (roles.includes(user.role)) {
+      next();
+    } else {
+      next(boom.unauthorized());
+    }
+  };
+};
+
+module.exports = { checkApiKey, checkRole };
