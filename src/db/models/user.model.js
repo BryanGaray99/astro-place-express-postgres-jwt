@@ -22,15 +22,20 @@ const UserSchema = {
     allowNull: false,
     type: DataTypes.STRING
   },
+  recoveryToken: {
+    field: 'recovery_token',
+    allowNull: true,
+    type: DataTypes.STRING
+  },
   role: {
     allowNull: false,
     type: DataTypes.STRING,
     defaultValue: 'client'
   },
   createdAt: {
+    field: 'created_at',
     allowNull: false,
     type: DataTypes.DATE,
-    field: 'created_at',
     defaultValue: Sequelize.NOW
   }
 };
