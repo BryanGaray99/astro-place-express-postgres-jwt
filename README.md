@@ -1,6 +1,6 @@
-# Astro Place Express Backend with PostgreSQL
+# Astro Place Express Backend with PostgreSQL + Passport.js & JWT
 
-Welcome to the Astro Place, an Express Backend with PostgreSQL project! This project serves as a demonstration of various backend development concepts and best practices. It covers a wide range of topics, including Sequelize ORM, creation of models and database management with migrations, Schemas validation with Joi, Error handling Middlewares using Boom, defition of services and routers using Single-Responsability principle, creation of development servers, containers and volumes with Docker, administration of the database with pgAdmin and much more. 
+Welcome to the Astro Place, an Express Backend with PostgreSQL project! This project serves as a demonstration of various backend development concepts and best practices. It covers a wide range of topics, including Sequelize ORM, creation of models and PostgreSQL database management with migrations, Schemas validation with Joi, Error handling Middlewares using Boom, defition of services and routers using Single-Responsability principle, creation of development servers, containers and volumes with Docker, security layers with Passport.js, JWT, role base authorization, password recovery with Nodemailer and much more.
 
 ## Endpoints
 
